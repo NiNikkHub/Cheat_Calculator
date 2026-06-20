@@ -36,22 +36,19 @@ button { cursor: pointer; }
 .iphone-shell {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
+  width: auto;
+  height: auto;
   overflow: hidden;
   background: #000;
 }
 .iphone-screen {
-  position: relative;
-  width: min(100vw, 430px);
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  width: min(100%, 430px);
+  height: auto;
   min-height: 0;
   margin: 0 auto;
-  padding:
-    env(safe-area-inset-top)
-    20px
-    calc(28px + env(safe-area-inset-bottom));
+  padding: 0 20px;
   overflow: hidden;
   background: #000;
 }
@@ -89,7 +86,7 @@ button { cursor: pointer; }
   min-height: 0;
   overflow: hidden;
   flex-direction: column;
-  padding-top: 57px;
+  padding-top: calc(57px + env(safe-area-inset-top));
 }
 
 .view-enter { animation: viewEnter .38s cubic-bezier(.2,.9,.25,1) both; }
@@ -130,7 +127,11 @@ button { cursor: pointer; }
 .result-line.error { color: #ff6963; font-size: clamp(2.1rem, 9vw, 3rem); }
 
 .standard-stack,
-.scientific-stack { display: grid; gap: 14px; padding-bottom: 36px; }
+.scientific-stack {
+  display: grid;
+  gap: 14px;
+  padding-bottom: max(28px, env(safe-area-inset-bottom));
+}
 .standard-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); grid-auto-rows: min(22vw, 86px); gap: 14px; }
 .scientific-row { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 10px; }
 
@@ -157,17 +158,17 @@ button { cursor: pointer; }
 .calc-key.operator { color: #fff; background: var(--orange); font-size: clamp(2rem, 12vw, 2.75rem); }
 .calc-key svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 1.7; }
 
-.scientific { padding-top: 38px; }
+.scientific { padding-top: calc(38px + env(safe-area-inset-top)); }
 .scientific .display-zone { min-height: 116px; padding-top: 22px; padding-bottom: 10px; }
 .scientific .expression-line { font-size: clamp(1.2rem, 5.3vw, 2rem); }
 .scientific .result-line { font-size: clamp(2.4rem, 11.5vw, 3.9rem); }
-.scientific-stack { gap: 8px; padding-bottom: 10px; }
+.scientific-stack { gap: 8px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
 .scientific-row { grid-auto-rows: min(13.4vw, 52px); gap: 8px; }
 .scientific-row .calc-key { width: 100%; height: 100%; aspect-ratio: auto; }
 .scientific-key { background: #1e1e22; font-size: clamp(.86rem, 4.2vw, 1.08rem); }
 .scientific-key.compact { font-size: clamp(.66rem, 3.4vw, .87rem); }
 .scientific-row .calc-key.function { color: #171717; background: #6d6d74; }
-.scientific .standard-stack { gap: 10px; padding-bottom: 20px; }
+.scientific .standard-stack { gap: 10px; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
 .scientific .standard-row { grid-auto-rows: min(14.4vw, 56px); gap: 10px; }
 .scientific .standard-row .calc-key { width: 100%; height: 100%; aspect-ratio: auto; font-size: clamp(1.05rem, 6.4vw, 1.7rem); }
 .scientific .standard-row .calc-key.operator { font-size: clamp(1.55rem, 8.6vw, 2.18rem); }
@@ -179,7 +180,10 @@ button { cursor: pointer; }
   flex-direction: column;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 84px 0 48px;
+  padding:
+    calc(84px + env(safe-area-inset-top))
+    0
+    calc(48px + env(safe-area-inset-bottom));
   scrollbar-width: none;
 }
 .notes-view::-webkit-scrollbar { display: none; }
@@ -361,15 +365,15 @@ button { cursor: pointer; }
 .switch.enabled .switch-thumb { transform: translateX(26px); }
 
 @media (max-height: 780px) {
-  .calculator-view { padding-top: 48px; }
+  .calculator-view { padding-top: calc(48px + env(safe-area-inset-top)); }
   .display-zone { min-height: 170px; padding-top: 26px; padding-bottom: 12px; }
-  .standard-stack { gap: 10px; padding-bottom: 20px; }
+  .standard-stack { gap: 10px; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
   .standard-row { grid-auto-rows: min(20vw, 76px); gap: 10px; }
-  .scientific { padding-top: 30px; }
+  .scientific { padding-top: calc(30px + env(safe-area-inset-top)); }
   .scientific .display-zone { min-height: 78px; padding-top: 8px; padding-bottom: 7px; }
-  .scientific-stack { gap: 6px; padding-bottom: 7px; }
+  .scientific-stack { gap: 6px; padding-bottom: max(7px, env(safe-area-inset-bottom)); }
   .scientific-row { grid-auto-rows: min(12vw, 44px); gap: 6px; }
-  .scientific .standard-stack { gap: 8px; padding-bottom: 14px; }
+  .scientific .standard-stack { gap: 8px; padding-bottom: max(14px, env(safe-area-inset-bottom)); }
   .scientific .standard-row { grid-auto-rows: min(13vw, 48px); gap: 8px; }
 }
 
