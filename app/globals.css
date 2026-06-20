@@ -37,7 +37,8 @@ button { cursor: pointer; }
   position: fixed;
   inset: 0;
   width: 100%;
-  height: auto;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background: #000;
 }
@@ -100,7 +101,7 @@ button { cursor: pointer; }
 .display-zone {
   display: flex;
   flex: 1 1 auto;
-  min-height: 260px;
+  min-height: 140px;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
