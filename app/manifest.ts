@@ -2,34 +2,30 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const basePath = process.env.GITHUB_ACTIONS === "true" ? "/Cheat_Calculator" : "";
-const withBasePath = (path: string) => `${basePath}${path}`;
-
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Калькулятор ТВМ / МС",
+    name: "Калькулятор",
     short_name: "Калькулятор",
-    description:
-      "Научный калькулятор и ответы по теории вероятностей и математической статистике.",
-    id: `${basePath}/`,
-    start_url: `${basePath}/`,
-    scope: `${basePath}/`,
+    description: "Калькулятор с практическими заданиями по теории вероятностей и математической статистике.",
+    start_url: "/",
+    scope: "/",
     display: "standalone",
-    orientation: "portrait",
     background_color: "#000000",
     theme_color: "#000000",
+    orientation: "portrait",
+    lang: "ru",
     icons: [
       {
-        src: withBasePath("/calculator-icon-192.png"),
+        src: "/icons/icon-192.png",
         sizes: "192x192",
         type: "image/png",
-        purpose: "maskable",
+        purpose: "any",
       },
       {
-        src: withBasePath("/calculator-icon-512.png"),
+        src: "/icons/icon-512.png",
         sizes: "512x512",
         type: "image/png",
-        purpose: "maskable",
+        purpose: "any",
       },
     ],
   };
